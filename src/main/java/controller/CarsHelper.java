@@ -8,11 +8,16 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import model.Car;
+import model.Garage;
 
 public class CarsHelper {
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("Cars");
 	
+	
 	public void persist(Car model) {
+		GarageHelper garageHelper = new GarageHelper();
+		Garage existing = garageHelper.searchGarageByName(model.getGarage().getName());
+		model.setGarage(existing);
 		EntityManager manager = factory.createEntityManager();
 		manager.getTransaction().begin();
 		manager.persist(model);

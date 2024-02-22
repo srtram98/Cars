@@ -1,9 +1,12 @@
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * @author Spencer Tramontina - srtramontina
@@ -23,6 +26,9 @@ public class Car {
 	private String model;
 	private String color;
 	private String ownerName;
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name="garageId", nullable = false)
+	private Garage garage = new Garage();
 	
 	
 	public int getRowId() {
@@ -71,6 +77,14 @@ public class Car {
 
 	public void setOwnerName(String ownerName) {
 		this.ownerName = ownerName;
+	}
+
+	public Garage getGarage() {
+		return garage;
+	}
+
+	public void setGarage(Garage garage) {
+		this.garage = garage;
 	}
 	
 	

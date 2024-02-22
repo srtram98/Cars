@@ -12,6 +12,7 @@
 	<table>
 		<c:forEach items="${requestScope.carList}" var="currentCar">
 			<tr>
+				<td>Garage: ${currentCar.garage.name} | </td>
 				<td>Owner: ${currentCar.ownerName} | </td>
 				<td>Year: ${currentCar.year} | </td>
 				<td>Make: ${currentCar.make} | </td>

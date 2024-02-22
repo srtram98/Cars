@@ -7,29 +7,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Car;
+import model.Garage;
 
 /**
- * Servlet implementation class addCar
+ * Servlet implementation class AddGarage
  */
-@WebServlet("/addCar")
-public class addCar extends HttpServlet {
+@WebServlet("/addGarage")
+public class AddGarage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public AddGarage() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Car c = new Car();
-		CarsHelper helper = new CarsHelper();
-		c.setYear(Integer.valueOf(request.getParameter("year")));
-		c.setMake(request.getParameter("make"));
-		c.setModel(request.getParameter("model"));
-		c.setColor(request.getParameter("color"));
-		c.setOwnerName(request.getParameter("ownerName"));
-		c.getGarage().setName(request.getParameter("garageName"));
-		helper.persist(c);
+		Garage g = new Garage();
+		GarageHelper helper = new GarageHelper();
+		g.setName(request.getParameter("garageName"));
+		helper.persist(g);
 		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 

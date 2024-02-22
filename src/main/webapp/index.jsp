@@ -11,8 +11,13 @@
 	<a href="addCar.jsp">Add a Car</a>
 	<a href="deleteCar.jsp">Delete a Car</a>
 	<a href="updateCar.jsp">Update a Car</a>
+	<br/>
+	<a href="addGarage.jsp">Add Garage</a>
 	<form action="viewCars" method="get">
 		<input type="submit" value="View All Cars">
+	</form>
+	<form action="viewGarage" method="get">
+		<input type="submit" value="View Garage">
 	</form>
 </body>
 </html>
